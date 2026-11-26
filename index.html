@@ -317,9 +317,13 @@ document.getElementById("list").innerHTML=shown.map(p=>`
 
 <div class="card">
 
-<div class="photo">${p.id===1||p.id===2?
-
-'<span 
+<div class="photo">${
+p.id===1||p.id===2
+?'<span class="uniqlo">UNIQLO</span>'
+:p.id===9
+?'<img src="BF981CA2-9BC7-4F26-876D-81785931E218.png" style="width:100%;height:100%;object-fit:contain;">'
+:p.icon
+}</div>
 
 
 class="uniqlo">UNIQLO</span>':p.icon}</div>
