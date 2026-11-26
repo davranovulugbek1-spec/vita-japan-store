@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html>
+
+<html lang="uz">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Vita Japan Store</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#fff8fb;color:#34232e;font-family:Arial,sans-serif}
+
+header{background:#fff;padding:18px;text-align:center;border-bottom:1px solid #f4dce8}
+
+.logo{font-family:Georgia,serif;font-size:30px;color:#a83e79}
+
+header p{margin:5px;color:#987c8b}
+
+nav{display:flex;justify-content:center;gap:12px;padding:15px}
+
+button{border:0;border-radius:25px;padding:12px 18px;background:#a83e79;color:white;font-size:15px}
+
+button.secondary{background:#f5e3ed;color:#87345f}
+
+.hero{margin:12px;padding:28px 18px;background:linear-gradient(135deg,#f8dce9,#fff5f9);border-radius:22px;text-align:center}
+
+.hero h1{font-family:Georgia,serif;color:#9f3c72;font-size:30px}
+
+.hero p{line-height:1.6}
+
+.categories{display:flex;gap:9px;overflow:auto;padding:12px}
+
+.categories button{white-space:nowrap}
+
+h2{padding:0 18px;color:#9f3c72}
+
+.products{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:12px}
+
+.card{background:white;border-radius:17px;padding:12px;box-shadow:0 3px 14px #ead5df}
+
+.photo{height:120px;background:#f9e9f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:42px}
+
+.card h3{font-size:15px}
+
+.card p{font-size:13px;color:#987c8b}
+
+.price{font-weight:bold;color:#a83e79}
+
+.card button{width:100%;font-size:13px;padding:10px}
+
+footer{text-align:center;padding:25px;color:#997b8b}
+
+a{text-decoration:none}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🌸 Vita Japan</div>
+
+<p>Japanese beauty & lifestyle 🇯🇵</p>
+
+</header>
+
+<nav>
+
+<button onclick="setLang('uz')">UZ 🇺🇿</button>
+
+<button class="secondary" onclick="setLang('ru')">RU 🇷🇺</button>
+
+</nav>
+
+<section class="hero">
+
+<h1 id="welcome">Yaponiyaning eng sara mahsulotlari</h1>
+
+<p id="intro">Original kosmetika, parvarish vositalari va boshqa yapon mahsulotlari. O‘zbekistonga buyurtma!</p>
+
+<button onclick="document.getElementById('catalog').scrollIntoView()">Magazinni ko‘rish</button>
+
+</section>
+
+<div class="categories">
+
+<button onclick="filter('all')">Barchasi</button>
+
+<button class="secondary" onclick="filter('cosmetics')">Kosmetika</button>
+
+<button class="secondary" onclick="filter('perfume')">Atirlar</button>
+
+<button class="secondary" onclick="filter('vitamins')">Vitaminlar</button>
+
+</div>
+
+<h2 id="catalog">🌸 Mahsulotlar</h2>
+
+<div class="products" id="products"></div>
+
+<h2>🛒 Savatcha: <span id="count">0</span></h2>
+
+<div style="padding:15px;text-align:center">
+
+<button onclick="order()">Telegram orqali buyurtma berish</button>
+
+</div>
+
+<footer>
+
+🇯🇵 Vita Japan Store<br>
+
+Yaponiyadan mehr bilan 💗
+
+<p><a href="https://t.me/VitaJapann">Telegram kanalimiz</a></p>
+
+</footer>
+
+<script>
+
+const items=[
+
+{name:"Yapon kosmetikasi",cat:"cosmetics",emoji:"🧴"},
+
+{name:"Yuz parvarishi",cat:"cosmetics",emoji:"🌸"},
+
+{name:"Yapon atirlari",cat:"perfume",emoji:"🌷"},
+
+{name:"Vitaminlar",cat:"vitamins",emoji:"🍊"},
+
+{name:"Soch parvarishi",cat:"cosmetics",emoji:"🫧"},
+
+{name:"Go‘zallik mahsulotlari",cat:"cosmetics",emoji:"🎀"}
+
+];
+
+let cart=[];
+
+let lang="uz";
+
+let shown=items;
+
+function render(){
+
+document.getElementById("products").innerHTML=shown.map((p,i)=>`
+
+<div class="card">
+
+<div class="photo">${p.emoji}</div>
+
+<h3>${p.name}</h3>
+
+<p>${lang==="uz"?"Narxni Telegram orqali so‘rang":"Уточняйте цену в Telegram"}</p>
+
+<button onclick="add('${p.name}')">${lang==="uz"?"Savatchaga qo‘shish":"В корзину"}</button>
+
+</div>`).join("");
+
+}
+
+function add(name){
+
+cart.push(name);
+
+document.getElementById("count").textContent=cart.length;
+
+}
+
+function filter(cat){
+
+shown=cat==="all"?items:items.filter(p=>p.cat===cat);
+
+render();
+
+}
+
+function setLang(l){
+
+lang=l;
+
+document.getElementById("welcome").textContent=l==="uz"?"Yaponiyaning eng sara mahsulotlari":"Лучшие товары из Японии";
+
+document.getElementById("intro").textContent=l==="uz"?"Original kosmetika, parvarish vositalari va boshqa yapon mahsulotlari. O‘zbekistonga buyurtma!":"Оригинальная косметика, средства ухода и другие японские товары. Заказы в Узбекистан!";
+
+render();
+
+}
+
+function order(){
+
+if(!cart.length){alert("Avval mahsulot tanlang!");return;}
+
+let msg="Assalomu alaykum! Vita Japan buyurtmam:\n"+cart.map(x=>"• "+x).join("\n");
+
+window.open("https://t.me/VitaJapann","_blank");
+
+}
+
+render();
+
+</script>
+
+</body>
+
+</html>
