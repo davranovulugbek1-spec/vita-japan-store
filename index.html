@@ -286,7 +286,7 @@ function renderCategories() {
 
   const all=document.createElement("button");
   all.className="category"+(selected==="all"?" active":"");
-  all.innerHTML="<span class='emoji'>🌸</span>"+t("Barchasi","Все товары");
+  all.innerHTML="<img src='barchasi-logo.png' alt='Vita Japan Store' style='width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 8px;'>"+t("Barchasi","Все товары");
   all.onclick=()=>{
     selected="all";
     renderCategories();
