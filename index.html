@@ -3,226 +3,177 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vita Japan Store</title>
 <style>
-:root{
+:root {
   --green:#073d2d;
   --deep:#032b20;
   --gold:#e7c477;
   --cream:#fbf5e9;
-  --brown:#50351f;
 }
-*{box-sizing:border-box}
-body{
+* { box-sizing:border-box; }
+body {
   margin:0;
   font-family:Arial,sans-serif;
   background:var(--cream);
-  color:var(--brown);
+  color:#3b3024;
 }
-button,input{font:inherit}
-button{cursor:pointer}
-header{
+header {
+  background:linear-gradient(120deg,var(--deep),var(--green));
   color:white;
-  background:linear-gradient(120deg,#03291e,#0c5940);
-  border-bottom:4px solid var(--gold);
+  border-bottom:3px solid var(--gold);
 }
-.top{
+.top {
   max-width:1200px;
   margin:auto;
-  padding:22px 18px;
+  padding:20px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:15px;
   flex-wrap:wrap;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.logo{
+.logo {
   color:var(--gold);
   font-family:Georgia,serif;
-  font-size:30px;
+  font-size:28px;
   font-weight:bold;
-  letter-spacing:2px;
 }
-.tagline{font-size:12px;color:#eee2c6}
-.controls{display:flex;gap:9px;align-items:center}
-.controls button{
+.tagline {font-size:12px;color:#f4e8c9}
+.controls {display:flex;gap:8px}
+.controls button {
   border:1px solid var(--gold);
+  border-radius:25px;
+  padding:10px 16px;
   background:transparent;
   color:white;
-  padding:10px 15px;
-  border-radius:25px;
 }
-.controls button.selected{
+.controls button.active {
   background:var(--gold);
   color:var(--deep);
 }
-.hero{
-  min-height:340px;
-  background:
-    radial-gradient(ellipse at 80% 90%,#b98d4c55,transparent 40%),
-    linear-gradient(115deg,#063426,#0a513b 65%,#153f31);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:45px max(calc((100% - 1100px)/2),25px);
-  gap:20px;
-  overflow:hidden;
+.banner img {
+  display:block;
+  width:100%;
+  height:auto;
 }
-.hero h1{
-  font-family:Georgia,serif;
-  font-size:clamp(35px,5vw,58px);
-  color:var(--gold);
-  margin:0 0 15px;
-}
-.hero p{font-size:18px;line-height:1.6;max-width:570px}
-.hero button{
-  background:var(--gold);
-  color:var(--deep);
-  border:0;
-  border-radius:30px;
-  padding:15px 25px;
-  font-weight:bold;
-  margin-top:10px;
-}
-.japan-art{
-  font-size:clamp(75px,13vw,145px);
-  text-align:center;
-  min-width:200px;
-  filter:drop-shadow(0 8px 15px #0005);
-}
-main{max-width:1200px;margin:auto;padding:25px 16px}
-.section-title{
+main {max-width:1200px;margin:auto;padding:22px 15px}
+h2 {
   color:var(--green);
   font-family:Georgia,serif;
-  font-size:29px;
-  margin:25px 0 18px;
+  font-size:28px;
 }
-.categories{
+.categories {
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:13px;
+  gap:12px;
 }
-.category{
-  background:#fffdf7;
-  border:1px solid #e9d9b8;
-  border-radius:17px;
+.category {
   min-height:125px;
-  padding:15px 8px;
+  padding:13px 8px;
+  border:1px solid #e3d0a9;
+  border-radius:16px;
+  background:#fffdf7;
   color:var(--green);
   font-weight:bold;
-  box-shadow:0 4px 12px #513b1710;
-  transition:.2s;
+  box-shadow:0 4px 12px #00000012;
 }
-.category:hover,.category.active{
+.category.active,.category:hover {
   background:var(--green);
   color:var(--gold);
-  transform:translateY(-3px);
 }
-.category .emoji{display:block;font-size:34px;margin-bottom:9px}
-.search-row{
+.emoji {display:block;font-size:32px;margin-bottom:8px}
+.uniqlo-logo {
   display:flex;
-  gap:10px;
-  margin:25px 0;
+  align-items:center;
+  justify-content:center;
+  width:72px;
+  height:72px;
+  margin:0 auto 8px;
+  background:#ed1c24;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
 }
-.search-row input{
-  flex:1;
-  min-width:0;
+.search {
+  width:100%;
   padding:15px 20px;
-  border:1px solid #cdb88e;
+  border:1px solid #cbb78f;
   border-radius:30px;
-  background:white;
+  margin:25px 0;
+  font-size:16px;
 }
-.search-row button,.add-btn,.order-btn{
+.products {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+.product {
+  background:white;
+  border:1px solid #eadfc9;
+  border-radius:16px;
+  padding:13px;
+  text-align:center;
+}
+.product img {
+  width:100%;
+  height:180px;
+  object-fit:contain;
+  background:#faf8f2;
+  border-radius:10px;
+}
+.product h3 {color:var(--green)}
+.product p {font-size:14px;color:#756957}
+.price {font-weight:bold;color:#916b2e;margin:12px}
+.action {
   background:var(--green);
   color:var(--gold);
   border:0;
   border-radius:25px;
-  padding:13px 20px;
-  font-weight:bold;
+  padding:12px 16px;
+  cursor:pointer;
 }
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:17px;
-}
-.product{
-  background:white;
-  border:1px solid #eadfc9;
-  border-radius:17px;
-  overflow:hidden;
-  padding:13px;
-  box-shadow:0 5px 15px #50351f12;
-}
-.product img{
-  width:100%;
-  height:190px;
-  object-fit:contain;
-  background:#faf8f2;
-  border-radius:12px;
-}
-.product h3{color:var(--green);margin:12px 0 7px}
-.product p{color:#766b5c;font-size:14px;min-height:34px}
-.price{font-weight:bold;color:#8b652b;margin:12px 0}
-.add-btn{width:100%}
-.empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:35px;
-  background:white;
-  border-radius:15px;
-}
-.cart{
-  background:white;
-  border:1px solid #e5d5b5;
-  padding:20px;
-  border-radius:17px;
+.product .action {width:100%}
+.cart {
   margin:30px 0;
+  background:white;
+  padding:20px;
+  border-radius:16px;
 }
-.cart-line{
+.cart-line {
   display:flex;
   justify-content:space-between;
   gap:12px;
   padding:10px 0;
-  border-bottom:1px solid #eee6d8;
+  border-bottom:1px solid #eee;
 }
-.cart-line button{
-  background:#eee2ce;
+.cart-line button {
   border:0;
-  border-radius:15px;
-  padding:5px 10px;
+  border-radius:12px;
+  padding:5px 12px;
 }
-footer{
+footer {
+  text-align:center;
+  padding:28px;
   background:var(--deep);
   color:#f5e5bd;
+}
+.empty {
+  grid-column:1/-1;
+  padding:30px;
   text-align:center;
-  padding:30px 15px;
-  margin-top:40px;
+  background:white;
+  border-radius:15px;
 }
-@media(max-width:850px){
-  .categories{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .products{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hero{padding:35px 22px}
-  .japan-art{min-width:100px}
+@media(max-width:800px) {
+  .categories {grid-template-columns:repeat(3,minmax(0,1fr))}
+  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media(max-width:480px){
-  .top{justify-content:center;text-align:center}
-  .brand{flex-direction:column}
-  .hero{min-height:300px}
-  .japan-art{font-size:65px;min-width:65px}
-  .hero p{font-size:15px}
-  .categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-  .category{min-height:112px;font-size:13px}
-  .products{gap:10px}
-  .product{padding:9px}
-  .product img{height:140px}
-  .search-row{flex-direction:column}
+@media(max-width:480px) {
+  .top {justify-content:center;text-align:center}
+  .categories {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .product img {height:135px}
 }
 </style>
 </head>
@@ -230,57 +181,50 @@ footer{
 
 <header>
   <div class="top">
-    <div class="brand">
-      <div>
-        <div class="logo">✿ VITA JAPAN</div>
-        <div class="tagline">STORE 🇯🇵 | Japan Quality</div>
-      </div>
+    <div>
+      <div class="logo">✿ VITA JAPAN STORE 🇯🇵</div>
+      <div class="tagline" id="tagline">Yapon mahsulotlari rasmiy do‘koni</div>
     </div>
     <div class="controls">
-      <button id="ruBtn" onclick="setLang('ru')">RU</button>
-      <button id="uzBtn" class="selected" onclick="setLang('uz')">UZ</button>
-      <button onclick="toggleCart()">🛍 <span id="cartCount">0</span></button>
+      <button id="uzButton" class="active" onclick="setLanguage('uz')">🇺🇿 UZ</button>
+      <button id="ruButton" onclick="setLanguage('ru')">🇷🇺 RU</button>
+      <button onclick="toggleCart()">🛒 <span id="cartCount">0</span></button>
     </div>
   </div>
 </header>
 
-<section class="hero">
-  <div>
-    <h1 id="heroTitle">Yaponiyadan sifatli mahsulotlar</h1>
-    <p id="heroText">Kosmetika, vitaminlar, kiyimlar va kundalik ehtiyojlar — barchasi bitta do‘konda.</p>
-    <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" id="heroBtn">Mahsulotlarni ko‘rish →</button>
-  </div>
-  <div class="japan-art">🗻🌸</div>
+<section class="banner">
+  <img src="IMG_8861.webp" alt="Vita Japan Store kategoriyalari">
 </section>
 
-<main id="shop">
-  <h2 class="section-title" id="catTitle">Kategoriyalar</h2>
+<main>
+  <h2 id="categoriesTitle">Kategoriyalar</h2>
   <div class="categories" id="categories"></div>
 
-  <div class="search-row">
-    <input id="search" placeholder="Mahsulot nomini qidiring..." oninput="renderProducts()">
-    <button onclick="renderProducts()">⌕</button>
-  </div>
+  <input class="search" id="search"
+    placeholder="Mahsulot nomini qidiring..."
+    oninput="renderProducts()">
 
-  <h2 class="section-title" id="productTitle">Ommabop mahsulotlar</h2>
+  <h2 id="productsTitle">Ommabop mahsulotlar</h2>
   <div class="products" id="products"></div>
 
-  <div class="cart" id="cart" hidden>
-    <h2 class="section-title" id="cartTitle">Savatcha</h2>
+  <section class="cart" id="cart" hidden>
+    <h2 id="cartTitle">Savatcha</h2>
     <div id="cartItems"></div>
     <p><b id="totalLabel">Jami:</b> <span id="total">0 ¥</span></p>
-    <button class="order-btn" onclick="sendOrder()" id="orderBtn">Telegram orqali buyurtma</button>
-  </div>
+    <button class="action" onclick="sendOrder()" id="orderButton">
+      Telegram orqali buyurtma
+    </button>
+  </section>
 </main>
 
 <footer>
   <div class="logo">VITA JAPAN STORE</div>
-  <p>🇯🇵 Japan Quality • Your Choice</p>
-  <p>© Vita Japan Store</p>
+  <p>Japan 🇯🇵 • Quality • Your Choice</p>
 </footer>
 
 <script>
-const categories=[
+const categories = [
  {id:"clothes",emoji:"👗",uz:"Ayollar va erkaklar kiyimlari",ru:"Женская и мужская одежда"},
  {id:"watches",emoji:"⌚",uz:"Brend soatlar",ru:"Брендовые часы"},
  {id:"cosmetics",emoji:"💄",uz:"Kosmetika",ru:"Косметика"},
@@ -293,7 +237,7 @@ const categories=[
  {id:"home",emoji:"🏠",uz:"Uy jihozlari",ru:"Товары для дома"}
 ];
 
-const products=[
+const products = [
  {
   id:1,
   category:"vitamins",
@@ -304,131 +248,190 @@ const products=[
  }
 ];
 
-let lang="uz";
+let language="uz";
 let selected="all";
 let cart=[];
 
-function t(uz,ru){return lang==="uz"?uz:ru}
-
-function setLang(value){
- lang=value;
- document.getElementById("uzBtn").classList.toggle("selected",lang==="uz");
- document.getElementById("ruBtn").classList.toggle("selected",lang==="ru");
- document.getElementById("heroTitle").textContent=t("Yaponiyadan sifatli mahsulotlar","Качественные товары из Японии");
- document.getElementById("heroText").textContent=t("Kosmetika, vitaminlar, kiyimlar va kundalik ehtiyojlar — barchasi bitta do‘konda.","Косметика, витамины, одежда и товары на каждый день — всё в одном магазине.");
- document.getElementById("heroBtn").textContent=t("Mahsulotlarni ko‘rish →","Смотреть товары →");
- document.getElementById("catTitle").textContent=t("Kategoriyalar","Категории");
- document.getElementById("productTitle").textContent=t("Ommabop mahsulotlar","Популярные товары");
- document.getElementById("cartTitle").textContent=t("Savatcha","Корзина");
- document.getElementById("totalLabel").textContent=t("Jami:","Итого:");
- document.getElementById("orderBtn").textContent=t("Telegram orqali buyurtma","Заказать через Telegram");
- document.getElementById("search").placeholder=t("Mahsulot nomini qidiring...","Поиск товаров...");
- renderCategories();
- renderProducts();
- renderCart();
+function t(uz,ru) {
+  return language==="uz" ? uz : ru;
 }
 
-function renderCategories(){
- const el=document.getElementById("categories");
- el.innerHTML="";
- const all=document.createElement("button");
- all.className="category"+(selected==="all"?" active":"");
- all.innerHTML="<span class='emoji'>🌸</span>"+t("Barchasi","Все товары");
- all.onclick=()=>{selected="all";renderCategories();renderProducts()};
- el.appendChild(all);
-
- categories.forEach(c=>{
-  const b=document.createElement("button");
-  b.className="category"+(selected===c.id?" active":"");
-  b.innerHTML="<span class='emoji'>"+c.emoji+"</span>"+c[lang];
-  b.onclick=()=>{selected=c.id;renderCategories();renderProducts()};
-  el.appendChild(b);
- });
+function setLanguage(lang) {
+  language=lang;
+  document.getElementById("uzButton").classList.toggle("active",lang==="uz");
+  document.getElementById("ruButton").classList.toggle("active",lang==="ru");
+  document.documentElement.lang=lang;
+  document.getElementById("tagline").textContent=
+    t("Yapon mahsulotlari rasmiy do‘koni","Магазин японских товаров");
+  document.getElementById("categoriesTitle").textContent=
+    t("Kategoriyalar","Категории");
+  document.getElementById("productsTitle").textContent=
+    t("Ommabop mahsulotlar","Популярные товары");
+  document.getElementById("cartTitle").textContent=
+    t("Savatcha","Корзина");
+  document.getElementById("totalLabel").textContent=
+    t("Jami:","Итого:");
+  document.getElementById("orderButton").textContent=
+    t("Telegram orqali buyurtma","Заказать через Telegram");
+  document.getElementById("search").placeholder=
+    t("Mahsulot nomini qidiring...","Поиск товаров...");
+  renderCategories();
+  renderProducts();
+  renderCart();
 }
 
-function renderProducts(){
- const el=document.getElementById("products");
- const q=document.getElementById("search").value.toLowerCase().trim();
- el.innerHTML="";
- const list=products.filter(p=>
-  (selected==="all"||p.category===selected)&&
-  (p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q))
- );
- if(!list.length){
-  const empty=document.createElement("div");
-  empty.className="empty";
-  empty.textContent=t("Bu bo‘limga mahsulotlar tez orada qo‘shiladi.","Товары в этом разделе скоро появятся.");
-  el.appendChild(empty);
-  return;
- }
- list.forEach(p=>{
-  const card=document.createElement("div");
-  card.className="product";
-  const img=document.createElement("img");
-  img.src=p.image;
-  img.alt=p.name;
-  const name=document.createElement("h3");
-  name.textContent=p.name;
-  const desc=document.createElement("p");
-  desc.textContent=p.desc;
-  const price=document.createElement("div");
-  price.className="price";
-  price.textContent=p.price>0?p.price.toLocaleString()+" ¥":t("Narxni so‘rang","Уточняйте цену");
-  const btn=document.createElement("button");
-  btn.className="add-btn";
-  btn.textContent=t("Savatchaga qo‘shish","Добавить в корзину");
-  btn.onclick=()=>addToCart(p.id);
-  card.append(img,name,desc,price,btn);
-  el.appendChild(card);
- });
+function renderCategories() {
+  const box=document.getElementById("categories");
+  box.innerHTML="";
+
+  const all=document.createElement("button");
+  all.className="category"+(selected==="all"?" active":"");
+  all.innerHTML="<span class='emoji'>🌸</span>"+t("Barchasi","Все товары");
+  all.onclick=()=>{
+    selected="all";
+    renderCategories();
+    renderProducts();
+  };
+  box.appendChild(all);
+
+  categories.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="category"+(selected===c.id?" active":"");
+
+    if(c.id==="clothes") {
+      b.innerHTML="<span class='uniqlo-logo'>UNIQLO</span>"+c[language];
+    } else {
+      b.innerHTML="<span class='emoji'>"+c.emoji+"</span>"+c[language];
+    }
+
+    b.onclick=()=>{
+      selected=c.id;
+      renderCategories();
+      renderProducts();
+    };
+    box.appendChild(b);
+  });
 }
 
-function addToCart(id){
- const p=products.find(x=>x.id===id);
- const item=cart.find(x=>x.id===id);
- if(item)item.qty++;
- else cart.push({...p,qty:1});
- renderCart();
+function renderProducts() {
+  const box=document.getElementById("products");
+  const query=document.getElementById("search").value.toLowerCase().trim();
+  box.innerHTML="";
+
+  const found=products.filter(p=>
+    (selected==="all" || p.category===selected) &&
+    (p.name.toLowerCase().includes(query) ||
+     p.desc.toLowerCase().includes(query))
+  );
+
+  if(found.length===0) {
+    const empty=document.createElement("div");
+    empty.className="empty";
+    empty.textContent=t(
+      "Bu kategoriyaga mahsulotlar tez orada qo‘shiladi.",
+      "Товары в этой категории скоро появятся."
+    );
+    box.appendChild(empty);
+    return;
+  }
+
+  found.forEach(p=>{
+    const card=document.createElement("div");
+    card.className="product";
+
+    const img=document.createElement("img");
+    img.src=p.image;
+    img.alt=p.name;
+
+    const title=document.createElement("h3");
+    title.textContent=p.name;
+
+    const desc=document.createElement("p");
+    desc.textContent=p.desc;
+
+    const price=document.createElement("div");
+    price.className="price";
+    price.textContent=p.price>0
+      ? p.price.toLocaleString()+" ¥"
+      : t("Narxni so‘rang","Уточняйте цену");
+
+    const button=document.createElement("button");
+    button.className="action";
+    button.textContent=t("Savatchaga qo‘shish","Добавить в корзину");
+    button.onclick=()=>addToCart(p.id);
+
+    card.append(img,title,desc,price,button);
+    box.appendChild(card);
+  });
 }
 
-function renderCart(){
- const el=document.getElementById("cartItems");
- el.innerHTML="";
- let total=0;
- let count=0;
- cart.forEach(item=>{
-  total+=item.price*item.qty;
-  count+=item.qty;
-  const line=document.createElement("div");
-  line.className="cart-line";
-  const name=document.createElement("span");
-  name.textContent=item.name+" × "+item.qty;
-  const remove=document.createElement("button");
-  remove.textContent="−";
-  remove.onclick=()=>{item.qty--;if(item.qty<=0)cart=cart.filter(x=>x.id!==item.id);renderCart()};
-  line.append(name,remove);
-  el.appendChild(line);
- });
- if(!cart.length)el.textContent=t("Savatcha hozircha bo‘sh.","Корзина пока пуста.");
- document.getElementById("cartCount").textContent=count;
- document.getElementById("total").textContent=total.toLocaleString()+" ¥";
+function addToCart(id) {
+  const product=products.find(p=>p.id===id);
+  const item=cart.find(p=>p.id===id);
+  if(item) item.quantity++;
+  else cart.push({...product,quantity:1});
+  renderCart();
 }
 
-function toggleCart(){
- const el=document.getElementById("cart");
- el.hidden=!el.hidden;
- if(!el.hidden)el.scrollIntoView({behavior:"smooth"});
+function renderCart() {
+  const box=document.getElementById("cartItems");
+  box.innerHTML="";
+  let total=0;
+  let count=0;
+
+  cart.forEach(item=>{
+    total+=item.price*item.quantity;
+    count+=item.quantity;
+
+    const line=document.createElement("div");
+    line.className="cart-line";
+
+    const name=document.createElement("span");
+    name.textContent=item.name+" × "+item.quantity;
+
+    const remove=document.createElement("button");
+    remove.textContent="−";
+    remove.onclick=()=>{
+      item.quantity--;
+      if(item.quantity<=0) cart=cart.filter(x=>x.id!==item.id);
+      renderCart();
+    };
+
+    line.append(name,remove);
+    box.appendChild(line);
+  });
+
+  if(cart.length===0) {
+    box.textContent=t("Savatcha bo‘sh","Корзина пуста");
+  }
+
+  document.getElementById("cartCount").textContent=count;
+  document.getElementById("total").textContent=total.toLocaleString()+" ¥";
 }
 
-function sendOrder(){
- if(!cart.length){
-  alert(t("Savatcha bo‘sh!","Корзина пуста!"));
-  return;
- }
- const lines=cart.map(x=>x.name+" x "+x.qty).join("\n");
- const message=t("Assalomu alaykum! Buyurtma bermoqchiman:\n","Здравствуйте! Хочу оформить заказ:\n")+lines;
- const url="https://t.me/share/url?url="+encodeURIComponent("https://davranovulugbek1-spec.github.io/vita-japan-store/")+"&text="+encodeURIComponent(message);
- window.open(url,"_blank");
+function toggleCart() {
+  const box=document.getElementById("cart");
+  box.hidden=!box.hidden;
+  if(!box.hidden) box.scrollIntoView({behavior:"smooth"});
+}
+
+function sendOrder() {
+  if(cart.length===0) {
+    alert(t("Savatcha bo‘sh!","Корзина пуста!"));
+    return;
+  }
+
+  const items=cart.map(p=>p.name+" x "+p.quantity).join("\n");
+  const message=t(
+    "Assalomu alaykum! Buyurtmam:\n",
+    "Здравствуйте! Мой заказ:\n"
+  )+items;
+
+  const url="https://t.me/share/url?url="+
+    encodeURIComponent("https://davranovulugbek1-spec.github.io/vita-japan-store/")+
+    "&text="+encodeURIComponent(message);
+
+  window.open(url,"_blank");
 }
 
 renderCategories();
