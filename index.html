@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Vita Japan Store</title>
 
@@ -16,49 +16,59 @@
 
 *{box-sizing:border-box}
 
-body{margin:0;background:#fff8fb;color:#34232e;font-family:Arial,sans-serif}
+body{margin:0;background:#fff8fb;color:#392b36;font-family:Arial,sans-serif}
 
-header{background:#fff;padding:18px;text-align:center;border-bottom:1px solid #f4dce8}
+header{background:white;padding:17px;text-align:center;display:flex;justify-content:space-between;align-items:center}
 
-.logo{font-family:Georgia,serif;font-size:30px;color:#a83e79}
+.logo{font:bold 24px Georgia;color:#994875}
 
-header p{margin:5px;color:#987c8b}
+.lang button{padding:9px 13px;background:#f4e6ee;color:#994875;font-size:14px}
 
-nav{display:flex;justify-content:center;gap:12px;padding:15px}
+.lang button.active{background:#994875;color:white}
 
-button{border:0;border-radius:25px;padding:12px 18px;background:#a83e79;color:white;font-size:15px}
+.hero{margin:20px 15px;padding:28px 17px;text-align:center;background:#f6e5ef;border-radius:28px}
 
-button.secondary{background:#f5e3ed;color:#87345f}
+.hero h1{font: bold 31px Georgia;color:#994875}
 
-.hero{margin:12px;padding:28px 18px;background:linear-gradient(135deg,#f8dce9,#fff5f9);border-radius:22px;text-align:center}
+.hero p{font-size:16px;line-height:1.6}
 
-.hero h1{font-family:Georgia,serif;color:#9f3c72;font-size:30px}
+button{border:0;border-radius:25px;padding:12px 17px;background:#994875;color:white;font-size:15px;cursor:pointer}
 
-.hero p{line-height:1.6}
+.categories{display:flex;gap:9px;overflow-x:auto;padding:12px}
 
-.categories{display:flex;gap:9px;overflow:auto;padding:12px}
+.categories button{white-space:nowrap;background:#f1e2eb;color:#85466e}
 
-.categories button{white-space:nowrap}
+.categories button.active{background:#994875;color:white}
 
-h2{padding:0 18px;color:#9f3c72}
+h2{color:#994875;margin:25px 18px}
 
-.products{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:12px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:14px}
 
-.card{background:white;border-radius:17px;padding:12px;box-shadow:0 3px 14px #ead5df}
+.card{background:white;padding:11px;border-radius:22px;box-shadow:0 5px 20px #0000000d;min-width:0}
 
-.photo{height:120px;background:#f9e9f0;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:42px}
+.photo{height:135px;background:#f6e9f0;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:57px}
 
-.card h3{font-size:15px}
+.uniqlo{background:#e60012;color:white;font-weight:bold;font-size:25px;padding:12px 9px}
 
-.card p{font-size:13px;color:#987c8b}
+.card h3{font-size:16px;line-height:1.35;min-height:40px}
 
-.price{font-weight:bold;color:#a83e79}
+.card p{color:#947d8c;font-size:13px;min-height:34px;line-height:1.4}
 
-.card button{width:100%;font-size:13px;padding:10px}
+.card button{width:100%;padding:11px 4px;font-size:13px}
 
-footer{text-align:center;padding:25px;color:#997b8b}
+.cart{background:white;margin:18px 14px;padding:18px;border-radius:22px}
 
-a{text-decoration:none}
+.cart h2{margin:5px 0 18px}
+
+.cart-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid #eee;padding:12px 0;font-size:14px}
+
+.cart-item button{padding:6px 12px}
+
+#count{background:#994875;color:white;border-radius:50%;padding:4px 9px}
+
+footer{text-align:center;padding:25px;color:#887482;line-height:1.8}
+
+a{color:#994875}
 
 </style>
 
@@ -70,139 +80,341 @@ a{text-decoration:none}
 
 <div class="logo">🌸 Vita Japan</div>
 
-<p>Japanese beauty & lifestyle 🇯🇵</p>
+<div class="lang">
+
+<button id="uz" class="active" onclick="language('uz')">UZ 🇺🇿</button>
+
+<button id="ru" onclick="language('ru')">RU 🇷🇺</button>
+
+</div>
 
 </header>
 
-<nav>
-
-<button onclick="setLang('uz')">UZ 🇺🇿</button>
-
-<button class="secondary" onclick="setLang('ru')">RU 🇷🇺</button>
-
-</nav>
-
 <section class="hero">
 
-<h1 id="welcome">Yaponiyaning eng sara mahsulotlari</h1>
+<h1 id="heroTitle"></h1>
 
-<p id="intro">Original kosmetika, parvarish vositalari va boshqa yapon mahsulotlari. O‘zbekistonga buyurtma!</p>
+<p id="heroText"></p>
 
-<button onclick="document.getElementById('catalog').scrollIntoView()">Magazinni ko‘rish</button>
+<button id="shopBtn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"></button>
 
 </section>
 
-<div class="categories">
+<div class="categories" id="categories"></div>
 
-<button onclick="filter('all')">Barchasi</button>
+<h2 id="productTitle"></h2>
 
-<button class="secondary" onclick="filter('cosmetics')">Kosmetika</button>
+<div class="products" id="list"></div>
 
-<button class="secondary" onclick="filter('perfume')">Atirlar</button>
+<section class="cart" id="cart">
 
-<button class="secondary" onclick="filter('vitamins')">Vitaminlar</button>
+<h2><span id="cartTitle"></span> <span id="count">0</span></h2>
 
-</div>
+<div id="items"></div>
 
-<h2 id="catalog">🌸 Mahsulotlar</h2>
+<p id="total"></p>
 
-<div class="products" id="products"></div>
+<button id="orderBtn" style="width:100%" onclick="order()"></button>
 
-<h2>🛒 Savatcha: <span id="count">0</span></h2>
-
-<div style="padding:15px;text-align:center">
-
-<button onclick="order()">Telegram orqali buyurtma berish</button>
-
-</div>
+</section>
 
 <footer>
 
-🇯🇵 Vita Japan Store<br>
+🌸 Vita Japan Store<br>
 
-Yaponiyadan mehr bilan 💗
+<a href="https://t.me/VitaJapann">Telegram: @VitaJapann</a><br>
 
-<p><a href="https://t.me/VitaJapann">Telegram kanalimiz</a></p>
+<a href="https://t.me/VitaJapan_StoreBot">Vita Japan Shop Bot</a>
 
 </footer>
 
 <script>
 
-const items=[
+let lang="uz";
 
-{name:"Yapon kosmetikasi",cat:"cosmetics",emoji:"🧴"},
-
-{name:"Yuz parvarishi",cat:"cosmetics",emoji:"🌸"},
-
-{name:"Yapon atirlari",cat:"perfume",emoji:"🌷"},
-
-{name:"Vitaminlar",cat:"vitamins",emoji:"🍊"},
-
-{name:"Soch parvarishi",cat:"cosmetics",emoji:"🫧"},
-
-{name:"Go‘zallik mahsulotlari",cat:"cosmetics",emoji:"🎀"}
-
-];
+let selected="all";
 
 let cart=[];
 
-let lang="uz";
+const text={
 
-let shown=items;
+uz:{
 
-function render(){
+hero:"Япониянинг энг сара маҳсулотлари",
 
-document.getElementById("products").innerHTML=shown.map((p,i)=>`
+desc:"Оригинал косметика, UNIQLO кийимлари, бренд соатлар ва витаминлар. Ўзбекистонга буюртма беринг!",
 
-<div class="card">
+shop:"Магазинни кўриш",
 
-<div class="photo">${p.emoji}</div>
+products:"🌸 Маҳсулотлар",
 
-<h3>${p.name}</h3>
+cart:"🛒 Саватча",
 
-<p>${lang==="uz"?"Narxni Telegram orqali so‘rang":"Уточняйте цену в Telegram"}</p>
+empty:"Ҳозирча саватча бўш.",
 
-<button onclick="add('${p.name}')">${lang==="uz"?"Savatchaga qo‘shish":"В корзину"}</button>
+add:"Саватчага қўшиш",
 
-</div>`).join("");
+order:"Telegram орқали буюртма бериш",
+
+categories:["Барчаси","UNIQLO кийимлари","Бренд соатлар","Косметика","Витаминлар"],
+
+ask:"Нарх ва етказиб бериш шартларини Telegram орқали келишамиз.",
+
+message:"🌸 Vita Japan Store буюртмаси:",
+
+alert:"Аввал маҳсулот танланг!",
+
+names:[
+
+"UNIQLO аёллар кийими","UNIQLO эркаклар кийими",
+
+"UNIQLO курткалари","Аёллар бренд соати",
+
+"Эркаклар бренд соати","Япон косметикаси",
+
+"Юз парвариши","Япон витаминлари",
+
+"Соғломлик маҳсулотлари"
+
+],
+
+descs:[
+
+"Аёллар учун оригинал кийимлар","Эркаклар учун оригинал кийимлар",
+
+"Қишки ва мавсумий кийимлар","Аёллар учун бренд соатлар",
+
+"Эркаклар учун бренд соатлар","Япония косметикаси",
+
+"Юз ва тана парвариши","Япон витаминлари",
+
+"Япониядан парвариш маҳсулотлари"
+
+]
+
+},
+
+ru:{
+
+hero:"Лучшие товары из Японии",
+
+desc:"Оригинальная косметика, одежда UNIQLO, брендовые часы и витамины. Заказывайте в Узбекистан!",
+
+shop:"Посмотреть магазин",
+
+products:"🌸 Наши товары",
+
+cart:"🛒 Корзина",
+
+empty:"Корзина пока пуста.",
+
+add:"В корзину",
+
+order:"Заказать через Telegram",
+
+categories:["Все товары","Одежда UNIQLO","Брендовые часы","Косметика","Витамины"],
+
+ask:"Цену и доставку уточним через Telegram.",
+
+message:"🌸 Заказ Vita Japan Store:",
+
+alert:"Сначала выберите товар!",
+
+names:[
+
+"Женская одежда UNIQLO","Мужская одежда UNIQLO",
+
+"Куртки UNIQLO","Женские брендовые часы",
+
+"Мужские брендовые часы","Японская косметика",
+
+"Уход за лицом","Японские витамины",
+
+"Товары для здоровья"
+
+],
+
+descs:[
+
+"Оригинальная женская одежда","Оригинальная мужская одежда",
+
+"Зимняя и сезонная одежда","Часы для женщин",
+
+"Часы для мужчин","Косметика из Японии",
+
+"Уход за лицом и телом","Японские витамины",
+
+"Товары для ухода из Японии"
+
+]
 
 }
 
-function add(name){
+};
 
-cart.push(name);
+const products=[
 
-document.getElementById("count").textContent=cart.length;
+{id:1,cat:"clothes",icon:"👚"},
 
-}
+{id:2,cat:"clothes",icon:"👕"},
 
-function filter(cat){
+{id:3,cat:"clothes",icon:"🧥"},
 
-shown=cat==="all"?items:items.filter(p=>p.cat===cat);
+{id:4,cat:"watches",icon:"⌚"},
 
-render();
+{id:5,cat:"watches",icon:"⌚"},
 
-}
+{id:6,cat:"cosmetics",icon:"🧴"},
 
-function setLang(l){
+{id:7,cat:"cosmetics",icon:"🌸"},
+
+{id:8,cat:"vitamins",icon:"💊"},
+
+{id:9,cat:"vitamins",icon:"🌿"}
+
+];
+
+function language(l){
 
 lang=l;
 
-document.getElementById("welcome").textContent=l==="uz"?"Yaponiyaning eng sara mahsulotlari":"Лучшие товары из Японии";
+document.getElementById("uz").classList.toggle("active",l==="uz");
 
-document.getElementById("intro").textContent=l==="uz"?"Original kosmetika, parvarish vositalari va boshqa yapon mahsulotlari. O‘zbekistonga buyurtma!":"Оригинальная косметика, средства ухода и другие японские товары. Заказы в Узбекистан!";
+document.getElementById("ru").classList.toggle("active",l==="ru");
 
 render();
+
+}
+
+function render(){
+
+let t=text[lang];
+
+document.documentElement.lang=lang;
+
+document.getElementById("heroTitle").innerText=t.hero;
+
+document.getElementById("heroText").innerText=t.desc;
+
+document.getElementById("shopBtn").innerText=t.shop;
+
+document.getElementById("productTitle").innerText=t.products;
+
+document.getElementById("cartTitle").innerText=t.cart;
+
+document.getElementById("orderBtn").innerText=t.order;
+
+let cats=["all","clothes","watches","cosmetics","vitamins"];
+
+document.getElementById("categories").innerHTML=cats.map((c,i)=>
+
+`<button class="${selected===c?'active':''}" onclick="filter('${c}')">${t.categories[i]}</button>`
+
+).join("");
+
+let shown=selected==="all"?products:products.filter(p=>p.cat===selected);
+
+document.getElementById("list").innerHTML=shown.map(p=>`
+
+<div class="card">
+
+<div class="photo">${p.id===1||p.id===2?
+
+'<span class="uniqlo">UNIQLO</span>':p.icon}</div>
+
+<h3>${t.names[p.id-1]}</h3>
+
+<p>${t.descs[p.id-1]}</p>
+
+<button onclick="add(${p.id})">${t.add}</button>
+
+</div>`).join("");
+
+update();
+
+}
+
+function filter(c){
+
+selected=c;
+
+render();
+
+}
+
+function add(id){
+
+let p=cart.find(x=>x.id===id);
+
+if(p)p.qty++;
+
+else cart.push({id,qty:1});
+
+update();
+
+}
+
+function removeItem(id){
+
+let p=cart.find(x=>x.id===id);
+
+if(p)p.qty--;
+
+cart=cart.filter(x=>x.qty>0);
+
+update();
+
+}
+
+function update(){
+
+let t=text[lang];
+
+document.getElementById("count").innerText=
+
+cart.reduce((s,p)=>s+p.qty,0);
+
+document.getElementById("items").innerHTML=cart.length?
+
+cart.map(p=>`
+
+<div class="cart-item">
+
+<span>${t.names[p.id-1]} × ${p.qty}</span>
+
+<button onclick="removeItem(${p.id})">−</button>
+
+</div>`).join(""):t.empty;
+
+document.getElementById("total").innerText=cart.length?t.ask:"";
 
 }
 
 function order(){
 
-if(!cart.length){alert("Avval mahsulot tanlang!");return;}
+if(!cart.length){
 
-let msg="Assalomu alaykum! Vita Japan buyurtmam:\n"+cart.map(x=>"• "+x).join("\n");
+alert(text[lang].alert);
 
-window.open("https://t.me/VitaJapann","_blank");
+return;
+
+}
+
+let t=text[lang];
+
+let message=t.message+"\n\n"+
+
+cart.map(p=>t.names[p.id-1]+" — "+p.qty).join("\n")+
+
+"\n\n"+t.ask;
+
+let url="https://t.me/share/url?url="+
+
+encodeURIComponent("https://t.me/VitaJapann")+
+
+"&text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
 
 }
 
